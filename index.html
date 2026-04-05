@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CodeNest | The Digital Crucible</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;family=Instrument+Serif:ital@1&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Libraries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#e9fbff",
+                        "surface-variant": "#212725",
+                        "on-error": "#490006",
+                        "secondary-dim": "#3cd2eb",
+                        "on-tertiary": "#296a2b",
+                        "outline-variant": "#444947",
+                        "on-secondary": "#004d58",
+                        "surface-container-high": "#1b211f",
+                        "primary-container": "#3db481",
+                        "secondary-fixed-dim": "#40d5ee",
+                        "on-background": "#f1f4f2",
+                        "tertiary-container": "#b2faa9",
+                        "background": "#0b0f0e",
+                        "surface-container-highest": "#212725",
+                        "outline": "#727675",
+                        "primary": "#88fcc2",
+                        "tertiary": "#e1ffd8",
+                        "secondary-fixed": "#54e3fc",
+                        "surface-bright": "#272d2c",
+                        "surface-tint": "#88fcc2",
+                        "on-secondary-fixed-variant": "#005965",
+                        "surface-container-low": "#101413",
+                        "tertiary-dim": "#a4eb9c",
+                        "inverse-on-surface": "#525654",
+                        "on-primary-container": "#002919",
+                        "tertiary-fixed": "#b2faa9",
+                        "on-tertiary-container": "#1f6223",
+                        "on-primary-fixed": "#004b31",
+                        "secondary-container": "#006876",
+                        "surface-container-lowest": "#000000",
+                        "on-surface": "#f1f4f2",
+                        "on-error-container": "#ffa8a3",
+                        "primary-dim": "#7aedb5",
+                        "error-dim": "#d7383b",
+                        "on-secondary-fixed": "#003a43",
+                        "surface": "#0b0f0e",
+                        "primary-fixed-dim": "#7aedb5",
+                        "surface-dim": "#0b0f0e",
+                        "error": "#ff716c",
+                        "on-primary-fixed-variant": "#006b47",
+                        "inverse-primary": "#006d48",
+                        "primary-fixed": "#88fcc2",
+                        "tertiary-fixed-dim": "#a4eb9c",
+                        "on-tertiary-fixed-variant": "#2a6c2c",
+                        "error-container": "#9f0519",
+                        "secondary": "#50e1f9",
+                        "inverse-surface": "#f7faf8",
+                        "on-surface-variant": "#a8acaa",
+                        "surface-container": "#151b19",
+                        "on-tertiary-fixed": "#054e12",
+                        "on-primary": "#00603f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Plus Jakarta Sans"],
+                        "editorial": ["Instrument Serif"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(4px);
+            position: relative;
+        }
+        /* Masked border effect for sharp technical feel */
+        .liquid-glass::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.4), rgba(255,255,255,0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .text-editorial { font-family: 'Instrument Serif', serif; font-style: italic; }
+        .grid-line { position: absolute; top: 0; height: 100%; width: 1px; background: rgba(136, 252, 194, 0.1); pointer-events: none; }
+        .glow-ellipse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(80, 225, 249, 0.15) 0%, rgba(136, 252, 194, 0.05) 50%, transparent 70%);
+            filter: blur(25px);
+            z-index: 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar (Shared Component Hierarchy) -->
+<header class="bg-emerald-950/40 backdrop-blur-3xl docked full-width top-0 sticky flex justify-between items-center px-8 py-4 w-full max-w-full z-50">
+<div class="text-2xl font-black tracking-tighter text-emerald-400">CodeNest</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-emerald-50/70 hover:text-emerald-400 transition-colors duration-300 font-label text-xs tracking-widest" href="#">PROJECTS</a>
+<a class="text-emerald-50/70 hover:text-emerald-400 transition-colors duration-300 font-label text-xs tracking-widest" href="#">BLOG</a>
+<a class="text-emerald-50/70 hover:text-emerald-400 transition-colors duration-300 font-label text-xs tracking-widest" href="#">ABOUT</a>
+<a class="text-emerald-50/70 hover:text-emerald-400 transition-colors duration-300 font-label text-xs tracking-widest" href="#">RESUME</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="hover:bg-emerald-400/10 transition-all duration-300 p-2 rounded-lg group active:scale-95 duration-200 ease-out">
+<span class="material-symbols-outlined text-emerald-400" data-icon="menu">menu</span>
+</button>
+</div>
+</header>
+<main class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
+<!-- Video Background Layer -->
+<div class="absolute inset-0 z-0">
+<video class="w-full h-full object-cover opacity-60" id="hero-video" loop="" muted="" playsinline=""></video>
+<!-- Vertical Grid Lines -->
+<div class="grid-line" style="left: 25%;"></div>
+<div class="grid-line" style="left: 50%;"></div>
+<div class="grid-line" style="left: 75%;"></div>
+<!-- Glows & Gradients -->
+<div class="glow-ellipse"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-[#070b0a] via-transparent to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[#070b0a] via-transparent to-transparent"></div>
+</div>
+<!-- Hero Content Section -->
+<div class="relative z-10 container mx-auto px-6 flex flex-col items-start md:items-center text-left md:text-center pt-20 pb-32">
+<!-- Liquid Glass Card -->
+<div class="liquid-glass w-[200px] h-[200px] -translate-y-[50px] flex flex-col justify-center items-center p-6 mb-8 group transition-transform duration-700 hover:scale-105" data-alt="close-up of digital glass cube with glowing chemical green core floating in an obsidian lab space">
+<div class="font-label text-[10px] tracking-[0.2em] text-primary mb-2">[ 2025 ]</div>
+<p class="text-sm text-center leading-snug text-on-surface-variant font-medium">
+                    Taught by <span class="text-editorial text-primary text-lg block -mt-1">Industry</span> Professionals
+                </p>
+<div class="absolute bottom-4 right-4 opacity-20 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-xs" data-icon="terminal">terminal</span>
+</div>
+</div>
+<!-- Typography & CTA -->
+<div class="max-w-4xl flex flex-col items-start md:items-center">
+<p class="font-label text-[11px] font-bold tracking-[0.25em] text-[#5ed29c] mb-6 uppercase">
+                    Career-Ready Curriculum
+                </p>
+<h1 class="font-headline font-[900] text-4xl md:text-[72px] leading-[1.1] md:leading-[0.95] tracking-tighter mb-8 max-w-3xl">
+                    LAUNCH YOUR CODING <span class="block">CAREER<span class="text-[#5ed29c]">.</span></span>
+</h1>
+<p class="text-sm md:text-base text-on-surface-variant/70 max-w-[512px] leading-relaxed mb-10">
+                    Step into the digital crucible where theory meets raw execution. Master the stacks that define modern engineering through surgical precision and deep immersion.
+                </p>
+<button class="group relative flex items-center gap-3 bg-[#5ed29c] text-on-primary-container font-headline font-black px-8 py-4 rounded-full transition-all duration-300 hover:bg-secondary hover:shadow-[0_0_30px_rgba(80,225,249,0.3)] active:scale-95">
+                    GET STARTED
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Background grid texture overlay -->
+<div class="absolute inset-0 pointer-events-none opacity-[0.03]" style="background-image: linear-gradient(#88fcc2 0.5px, transparent 0.5px), linear-gradient(90deg, #88fcc2 0.5px, transparent 0.5px); background-size: 64px 64px;"></div>
+</main>
+<!-- SideNavBar (Mobile View Drawer Logic - Semantic representation) -->
+<aside class="hidden fixed inset-y-0 right-0 w-64 border-l border-emerald-500/15 bg-black/80 backdrop-blur-2xl flex flex-col h-full p-6 z-[60] translate-x-full transition-transform duration-500" id="mobile-nav">
+<div class="flex flex-col gap-2 mb-10">
+<span class="text-xl font-black text-emerald-400">CodeNest</span>
+<span class="font-label text-[10px] tracking-widest text-emerald-50/40 uppercase">The Digital Crucible</span>
+</div>
+<nav class="flex flex-col gap-6">
+<a class="flex items-center gap-4 text-emerald-50/60 font-label font-bold text-xs tracking-widest hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="folder">folder</span> PROJECTS
+            </a>
+<a class="flex items-center gap-4 text-emerald-50/60 font-label font-bold text-xs tracking-widest hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="article">article</span> BLOG
+            </a>
+<a class="flex items-center gap-4 text-emerald-50/60 font-label font-bold text-xs tracking-widest hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="person">person</span> ABOUT
+            </a>
+<a class="flex items-center gap-4 text-emerald-50/60 font-label font-bold text-xs tracking-widest hover:text-emerald-300" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="description">description</span> RESUME
+            </a>
+</nav>
+</aside>
+<script>
+        const video = document.getElementById('hero-video');
+        const videoSrc = 'https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8';
+
+        if (Hls.isSupported()) {
+            const hls = new Hls({ enableWorker: false });
+            hls.loadSource(videoSrc);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
+                video.play();
+            });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            video.src = videoSrc;
+            video.addEventListener('loadedmetadata', function() {
+                video.play();
+            });
+        }
+    </script>
+</body></html>
